@@ -1,0 +1,32 @@
+<!doctype html>
+<title>Hello from Flask</title>
+
+<div>
+    <h1>Crear usuario</h1>
+    <form action="{{url_for('create_user') }}" method="POST">
+        name: <input type="text" name='name'>
+        phone: <input type="text" name='phone'>
+        email: <input type="text" name='email'>
+        birth: <input type="date" name='birth'>
+        <button type="submit">Crear</button>
+    </form>
+</div>
+
+<div>
+    <h1>Editar usuario</h1>
+    <form action="{{url_for('edit_user') }}" method="POST">
+        key: <input type="text" name='key'>
+        Nuevo nombre: <input type="text" name='new_name'>
+
+        <button type="submit">Cambiar nombre</button>
+    </form>
+</div>
+
+<div>
+    <h1>Borrar usuario</h1>
+    <form action="{{url_for('delete_user') }}" method="POST">
+        key: <input type="text" name='key'>
+
+        <button type="submit">Borrar usuario</button>
+    </form>
+</div>
