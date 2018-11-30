@@ -1,0 +1,14 @@
+version: '3'
+services:
+  backend:
+      build: .
+      ports:
+        - '8000:8080'
+      environment:
+        - FLASK_APP=main.py
+        - FLASK_ENV=dev
+        - FLASK_DEBUG=1
+        - 'RUN=flask run --host=0.0.0.0 --port=8080'
+      volumes:
+        - ./app:/app
+      command: bash -c "while true; do sleep 1; done"

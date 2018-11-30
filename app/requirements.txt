@@ -1,4 +1,5 @@
 pytest==4.0.1
 coverage==4.5.2
 pytest-flask==0.14.0
-fam==2.0.5
+Flask-Injector==0.11.0
+cloudant==2.9.0
