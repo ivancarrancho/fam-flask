@@ -8,7 +8,9 @@ from app.providers.fam import FamProvider
 from app.providers.couchdb import CouchDBProvider
 from app.providers.user import UserCouchDBProvider
 from app.providers.user import UserFamProvider
-from app.endpoints.user import UserAPI
+from app.providers.event import EventProvider
+
+from app.endpoints.views import configure_views
 
 
 def create_app(test_config=None):
@@ -38,13 +40,14 @@ def create_app(test_config=None):
     def visit_home(name=None):
         return render_template('/index.html', name=name)
 
-    app.add_url_rule('/user', view_func=UserAPI.as_view('user'))
+    configure_views(app)
 
     def configure(binder):
         binder.bind(FamProvider)
         binder.bind(CouchDBProvider)
         binder.bind(UserCouchDBProvider)
         binder.bind(UserFamProvider)
+        binder.bind(EventProvider)
 
     FlaskInjector(app=app, modules=[configure])
 
